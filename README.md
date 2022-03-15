@@ -1,4 +1,4 @@
-# <img src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/svelte.png" width=48>  + <img src="https://vitejs.dev/logo.svg" width=64> + <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png" width=72> + <img src="https://www.pngrepo.com/download/303670/firebase-1-logo.png" width=64>
+# <img src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/svelte.png" width=48>  + <img src="https://vitejs.dev/logo.svg" width=64> + <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png" width=72> + <img src="https://cdn.iconscout.com/icon/free/png-256/firebase-3628772-3030134.png" width=64>
 # PWA Starter Template
 #### ...with all the good stuff
 
@@ -18,9 +18,9 @@
 
 ---
 ### Getting Started
-```aidl
-git clone https://github.com/devlucem/PWA.git
-cd PWA
+```
+npx degit devlucem/pwa my-app
+cd my-app
 npm install
 ```
 #### Test Locally
