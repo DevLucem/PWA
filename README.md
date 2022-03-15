@@ -25,6 +25,9 @@ npm install
 ```
 #### Test Locally
 `npm run dev`
+
+Note the PWA will not be installable in development mode as the manifest file is unreachable.
+
 ### Build for production
 `npm run build`
 
