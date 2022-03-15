@@ -1,0 +1,11 @@
+.contain {
+    @apply container mx-auto px-4 flex flex-col items-center justify-center;
+}
+
+.card {
+    @apply bg-red-100 rounded shadow m-4 p-4;
+}
+
+.h-scroll {
+    @apply flex flex-nowrap;
+}
