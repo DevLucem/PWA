@@ -1,8 +1,9 @@
 const staticDevCoffee = "cache-v1"
 const assets = [
     "/index.html",
-    "/style.css",
-    "/bundle.js",
+    "/index.css",
+    "/index.js",
+    "/vendor.js",
     "/svelte.jpg",
 ]
 
