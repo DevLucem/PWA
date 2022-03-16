@@ -31,7 +31,7 @@ Note the PWA will not be installable in development mode as the manifest file is
 ### Build for production
 `npm run build`
 
-Your files will be available in the `dist` folder. Go to [dist/serviceWorker](./dist/serviceWorker.js) file and update the css file and js files in the `assets` variable to the new names generated in the [dist/assets](./dist/assets) folder before running the next command.
+Your files will be available in the `dist` folder. Go to [dist/serviceWorker](./dist/serviceWorker.js) file and add any files not included in the `assets` variable before running the next command.
 
 `firebase deploy`
 
