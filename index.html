@@ -2,22 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="apple-touch-icon" href="/icon-192.png" />
-    <link rel="apple-touch-icon" href="/icon-512.png" />
+<!--    todo change theme color-->
     <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
     <meta name="theme-color" content="#db4938" />
 
-    <title>PWA</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icon-512.png" />
+
+<!--    todo change the site title-->
+    <title>PWA - Dev Lucem</title>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function() {
           navigator.serviceWorker
                   .register("/serviceWorker.js")
-                  .then(res => console.log("service worker registered"))
-                  .catch(err => console.log("service worker not registered", err))
+                  .then(() => console.log("service worker registered!"))
+                  .catch(err => console.error("Failed to register service worker", err))
         })
       }
     </script>
