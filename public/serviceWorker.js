@@ -1,4 +1,3 @@
-const staticDevCoffee = "cache-v1"
 const assets = [
     "/index.html",
     "/index.css",
@@ -9,16 +8,23 @@ const assets = [
 
 self.addEventListener("install", installEvent => {
     installEvent.waitUntil(
-        caches.open(staticDevCoffee).then(cache => {
+        caches.open("cache-v5").then(cache => {
             cache.addAll(assets).catch(e => console.error("Failed To Store Cache", e))
         })
     )
 })
 
+self.addEventListener('message',  messageEvent => {
+    if (messageEvent.data.action === 'skipWaiting') {
+        self.skipWaiting();
+    }
+});
+
 self.addEventListener("fetch", fetchEvent => {
-    fetchEvent.respondWith(
-        caches.match(fetchEvent.request).then(res => {
-            return res || fetch(fetchEvent.request)
-        })
-    )
+    if (fetchEvent.request.url.indexOf('firestore.googleapis.com') === 1)
+        fetchEvent.respondWith(
+            caches.match(fetchEvent.request).then(res => {
+                return res || fetch(fetchEvent.request)
+            })
+        )
 })

@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 <!--    todo change theme color-->
     <meta name="apple-mobile-web-app-status-bar" content="#db4938" />
     <meta name="theme-color" content="#db4938" />
@@ -14,16 +15,6 @@
 
 <!--    todo change the site title-->
     <title>PWA - Dev Lucem</title>
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", function() {
-          navigator.serviceWorker
-                  .register("/serviceWorker.js")
-                  .then(() => console.log("service worker registered!"))
-                  .catch(err => console.error("Failed to register service worker", err))
-        })
-      }
-    </script>
   </head>
   <body>
     <div id="app"></div>

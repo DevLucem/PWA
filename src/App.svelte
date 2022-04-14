@@ -1,8 +1,30 @@
 <script>
+  let update = false;
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/serviceWorker.js").then(reg => {
+      reg.addEventListener("updatefound", () => {
+        let newWorker = reg.installing;
+        newWorker.addEventListener('statechange', () => {
+          console.log(newWorker.state)
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller){
+            update = true;
+            newWorker.postMessage({action: 'skipWaiting'})
+            console.log('new update found')
+          }
+        })
+      })
+    }).catch(err => console.error("Failed to register service worker", err))
+    let refreshing;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (refreshing) return;
+      window.location.reload();
+      refreshing = true;
+    });
+  }
+
   import "./lib/Tailwind.svelte"
   import "./style.css"
   import router from "page"
-  // todo edit your route pages here
   import Home from "./pages/Home.svelte";
   let current; let params; [
           ["**", Home]
@@ -14,7 +36,7 @@
   <title>PWA - Dev Lucem</title>
 </svelte:head>
 
-<main class="flex flex-col h-screen w-screen bg-fade">
+<main class="flex flex-col h-screen w-screen bg-fade relative">
 
   <nav class="flex justify-between bg-primary px-4 py-2 shadow-lg">
     <h1 class="font-bold text-xl">PWA</h1>
@@ -44,5 +66,14 @@
     </svg>
 
   </footer>
+
+  {#if update}
+    <div class="absolute top-0 right-0 left-0 flex justify-center">
+      <div class="card flex items-center">
+        <p>A new update is available</p>
+        <button class="bg-white rounded px-2 py-1 ml-4 hover:bg-red-100" on:click={()=>update.postMessage({action: 'skipWaiting'})}>install</button>
+      </div>
+    </div>
+  {/if}
 
 </main>
