@@ -4,17 +4,11 @@
 ![Demo](https://user-images.githubusercontent.com/22216995/159932666-65ad3861-7123-4187-88af-662fbf2a32db.png)
 
 ### Features
-- Created with [Svelte][svelte] for easy development
-- JIT development with [Vite][vite] for fast builds!
-- Preset [Tailwind CSS][tailwind] no hassle UI
-- Initialized [Firebase Hosting][firebase] for testing
-- Preset [PageJS Router][pagejs] on your pages
-
-[svelte]: [https://svelte.dev/]
-[vite]: [https://vitejs.dev/]
-[tailwind]: [https://tailwindcss.com/]
-[firebase]: [https://firebase.google.com/docs/hosting]
-[pagejs]: [https://www.npmjs.com/package/page]
+- Created with [Svelte](https://svelte.dev/) for easy development
+- JIT development with [Vite](https://vitejs.dev/) for fast builds!
+- Preset [Tailwind CSS](https://tailwindcss.com/) no hassle UI
+- Initialized [Firebase Hosting](https://firebase.google.com/docs/hosting) for testing
+- Preset [PageJS Router](https://www.npmjs.com/package/page) on your pages
 
 ---
 ### Getting Started
