@@ -1,5 +1,4 @@
-## PWA Starter Template
-[Demo: My-Progressive.Web.App](https://my-progressive.web.app)
+## [My-Progressive.Web.App](https://my-progressive.web.app) Starter Template
 #### ...with all the good stuff
 <img src="https://uxwing.com/wp-content/themes/uxwing/download/10-brands-and-social-media/svelte.png" width=48>  + <img src="https://vitejs.dev/logo.svg" width=64> + <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png" width=72> + <img src="https://cdn.iconscout.com/icon/free/png-256/firebase-3628772-3030134.png" width=64>
 
