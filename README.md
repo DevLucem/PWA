@@ -3,6 +3,7 @@
 #### ...with all the good stuff
 
 [Demo: My-Progressive.Web.App](https://my-progressive.web.app)
+
 ![Demo](https://user-images.githubusercontent.com/22216995/159932666-65ad3861-7123-4187-88af-662fbf2a32db.png)
 
 ---
@@ -36,6 +37,7 @@ npm install
 - Update the [src/firebase](./src/firebase.js) config files with your above keys
 - To customize your app, go to [public/serviceWorker](./public/serviceWorker.js) and [public/manifest](./public/manifest.json) files and add any files not included in the `assets` and `icons`.
 - More customization is available by searching lines with `TODO`
+- You can use [Icons Builder](https://www.pwabuilder.com/imageGenerator) to generate your icons
 #### Test Locally
 `npm run dev`
 
