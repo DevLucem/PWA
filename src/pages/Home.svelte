@@ -1,7 +1,10 @@
 <script>
     import Button from "../components/AuthenticationButton.svelte";
+    import {listenData} from "../firebase";
     export let params;
     $: if (params) console.log('Received Params URL', params)
+    let groups = [];
+    listenData("groups", r => {groups=[]; r.forEach(group => groups.push(group.data()))})
 </script>
 
 <div class="flex flex-col max-w-lg shadow shadow-xl bg-white rounded m-4 p-4 space-y-4">
@@ -13,6 +16,13 @@
             <a href={icon[0]} class="duration-500 m-1 hover:scale-105 hover:shadow-xl border border-.5 border-fade p-2 rounded">
                 <img alt="Built With" src={icon[1]} class="w-full">
             </a>
+        {/each}
+    </div>
+
+    <div class="flex">
+        Firestore:
+        {#each groups as group}
+            {group.name}
         {/each}
     </div>
 

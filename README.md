@@ -2,6 +2,7 @@
 # PWA Starter Template
 #### ...with all the good stuff
 
+[Demo: My-Progressive.Web.App](https://my-progressive.web.app)
 ![Demo](https://user-images.githubusercontent.com/22216995/159932666-65ad3861-7123-4187-88af-662fbf2a32db.png)
 
 ---
@@ -25,17 +26,28 @@ npx degit devlucem/pwa my-app
 cd my-app
 npm install
 ```
+### Configure
+- Create a firebase project or get the firebase config files of the one you already have
+    ```
+    apiKey: "",
+    authDomain: "",
+    projectId: ""
+   ```
+- Update the [src/firebase](./src/firebase.js) config files with your above keys
+- To customize your app, go to [public/serviceWorker](./public/serviceWorker.js) and [public/manifest](./public/manifest.json) files and add any files not included in the `assets` and `icons`.
+- More customization is available by searching lines with `TODO`
 #### Test Locally
 `npm run dev`
 
-Note the PWA will not be installable in development mode as the manifest file is unreachable.
-
-### Build for production
+#### Build for production
 `npm run build`
 
-Your files will be available in the `dist` folder. Go to [dist/serviceWorker](./dist/serviceWorker.js) file and add any files not included in the `assets` variable before running the next command.
+---
 
-`firebase deploy`
+Your files will be available in the [dist](./dist) folder.
+To push the files to your firebase hosting, run the commands below. Make sure to fill the dist folder as your hosting one.
+
+`firebase init hosting && firebase deploy`
 
 # Made With ♥
 ```
