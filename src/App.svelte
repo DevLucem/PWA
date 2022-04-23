@@ -1,10 +1,8 @@
 <script>
-  let update = false;
-  if ("serviceWorker" in navigator) {
+  if ("serviceWorker" in navigator)
     navigator.serviceWorker.register("/serviceWorker.js")
             .then(() => console.log("Service worker registered!"))
             .catch(err => console.error("Failed to register service worker", err))
-  }
 
   import "./lib/Tailwind.svelte"
   import "./style.css"
@@ -51,14 +49,5 @@
     </svg>
 
   </footer>
-
-  {#if update}
-    <div class="absolute top-0 right-0 left-0 flex justify-center">
-      <div class="card flex items-center">
-        <p>A new update is available</p>
-        <button class="bg-white rounded px-2 py-1 ml-4 hover:bg-red-100" on:click={()=>update.postMessage({action: 'skipWaiting'})}>install</button>
-      </div>
-    </div>
-  {/if}
 
 </main>
