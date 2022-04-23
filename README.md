@@ -26,7 +26,7 @@ npm install
    ```
 - Update the [src/firebase](./src/firebase.js) config files with your above keys
 - To customize your app, go to [public/serviceWorker](./public/serviceWorker.js) and [public/manifest](./public/manifest.json) files and add any files not included in the `assets` and `icons`.
-- More customization is available by searching lines with `TODO`
+- More theme and website customizations are available by searching lines with `TODO`
 - You can use [Icons Builder](https://www.pwabuilder.com/imageGenerator) to generate your icons
 #### Test Locally
 `npm run dev`

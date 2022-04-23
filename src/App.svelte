@@ -1,25 +1,9 @@
 <script>
   let update = false;
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/serviceWorker.js").then(reg => {
-      reg.addEventListener("updatefound", () => {
-        let newWorker = reg.installing;
-        newWorker.addEventListener('statechange', () => {
-          console.log(newWorker.state)
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller){
-            update = true;
-            newWorker.postMessage({action: 'skipWaiting'})
-            console.log('new update found')
-          }
-        })
-      })
-    }).catch(err => console.error("Failed to register service worker", err))
-    let refreshing;
-    navigator.serviceWorker.addEventListener('controllerchange', function () {
-      if (refreshing) return;
-      window.location.reload();
-      refreshing = true;
-    });
+    navigator.serviceWorker.register("/serviceWorker.js")
+            .then(() => console.log("Service worker registered!"))
+            .catch(err => console.error("Failed to register service worker", err))
   }
 
   import "./lib/Tailwind.svelte"
@@ -33,6 +17,7 @@
 </script>
 
 <svelte:head>
+  <!--    todo change the site title or you can use -->
   <title>PWA - Dev Lucem</title>
 </svelte:head>
 

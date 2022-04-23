@@ -19,12 +19,11 @@
         {/each}
     </div>
 
-    <div class="flex">
-        Firestore:
-        {#each groups as group}
-            {group.name}
-        {/each}
-    </div>
+    {#if groups.length > 0}
+        <div class="flex">
+            Firestore Data: {groups[0].name}
+        </div>
+    {/if}
 
     <p>
         Built with <strong> <a href="https://svelte.dev/" target="_blank">Svelte!</a> </strong> for cybernetically enhanced web apps.
