@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "my-progressive",
+    "site": "pwa-progressive",
     "public": "dist",
     "ignore": [
       "firebase.json",
