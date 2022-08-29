@@ -17,6 +17,7 @@
     "vite": "^2.8.0"
   },
   "dependencies": {
-    "firebase": "^9.6.8"
+    "firebase": "^9.6.8",
+    "gh-pages": "^4.0.0"
   }
 }
