@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .contain {
     @apply container mx-auto px-4 flex flex-col items-center justify-center;
 }

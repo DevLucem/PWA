@@ -1,13 +1,15 @@
 <script>
-    import Button from "../components/AuthenticationButton.svelte";
+    import AuthenticationButton from "../components/AuthenticationButton.svelte";
     import {listenData} from "../firebase";
+    
     export let params;
     $: if (params) console.log('Received Params URL', params)
+    
     let groups = [];
-    listenData("groups", r => {groups=[]; r.forEach(group => groups.push(group.data()))})
+    listenData("groups", result => {groups=[]; result.forEach(group => groups.push(group.data()))})
 </script>
 
-<div class="flex flex-col max-w-lg shadow shadow-xl bg-white rounded m-4 p-4 space-y-4">
+<div class="flex flex-col max-w-lg shadow-xl bg-white rounded m-4 p-4 space-y-4">
 
     <h1>Progressive Web App</h1>
 
@@ -33,7 +35,7 @@
     </p>
 
     <div class="mx-auto">
-        <Button/>
+        <AuthenticationButton />
     </div>
 
 </div>

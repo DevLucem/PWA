@@ -4,7 +4,6 @@
             .then(() => console.log("Service worker registered!"))
             .catch(err => console.error("Failed to register service worker", err))
 
-  import "./lib/Tailwind.svelte"
   import "./style.css"
   import router from "page"
   import Home from "./pages/Home.svelte";
