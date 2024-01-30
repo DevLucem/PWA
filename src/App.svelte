@@ -1,8 +1,12 @@
 <script>
-  if ("serviceWorker" in navigator)
+  if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/serviceWorker.js")
-            .then(() => console.log("Service worker registered!"))
-            .catch(err => console.error("Failed to register service worker", err))
+            .then(() => console.log("Caching worker registered!"))
+            .catch(err => console.error("Failed to register Cache service worker", err))
+    navigator.serviceWorker.register("/firebase-messaging-sw.js")
+            .then(() => console.log("Notifications worker registered!"))
+            .catch(err => console.error("Failed to register Notifications service worker", err));
+  }
 
   import "./style.css"
   import router from "page"
