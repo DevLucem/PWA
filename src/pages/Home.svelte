@@ -5,8 +5,8 @@
     export let params;
     $: if (params) console.log('Received Params URL', params)
     
-    let groups = [];
-    listenData("groups", result => {groups=[]; result.forEach(group => groups.push(group.data()))})
+    let data = [];
+    listenData("data", result => {data=[]; result.forEach(group => data.push(group.data()))})
 </script>
 
 <div class="flex flex-col max-w-lg shadow-xl bg-white rounded m-4 p-4 space-y-4">
@@ -21,9 +21,9 @@
         {/each}
     </div>
 
-    {#if groups.length > 0}
+    {#if data.length > 0}
         <div class="flex">
-            Firestore Data: {groups[0].name}
+            Firestore Data: {data[0].name}
         </div>
     {/if}
 
