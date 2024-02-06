@@ -8,24 +8,45 @@ const app = initializeApp({ // Add your project config here
 
 const messaging = getMessaging(app);
 
-getToken(messaging, {vapidKey: "BPrm1I76J6z4vX0WNNyDSZ2jzPmF6k6LeCOXyH6ts9WNdihqQ6YTLD2v38jObtyjxdDMQuxMZfq5wm_PcNRAFLA"}).then(console.log);
+export const setupNotifications = registration => {
+    console.log("Service Worker Registered. Connecting Notifications...", vapidKey);
+    getToken(messaging, {
+        vapidKey: "BFyP8s6XOrMw_8B-sAf-98CVUq1mGVkyyRVOyphATjjCuC5_FEqMcg4nHW51Sg8z85kL-kNR9vJ5sTPFJYp3d7Q",
+        serviceWorkerRegistration: registration
+    }).then(token => {
+        console.log('Token:', token);
+        fetch('/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({token: token, topic: 'all'})
+        }).then(res => {
+            console.log('Sent token to server', res);
+        }).catch(console.error);
+
+    }).catch(console.error);   
+}
+
 onMessage(messaging, (payload) => {
     console.log('Message received. ', payload);
-
+    // todo: show notification in foreground
 });
 
-// const notificationPermission = () => {
-//     Notification.requestPermission().then((permission) => {
-//         if (permission === 'granted') {
-//             console.log('Notification permission granted.');
-//             // TODO(developer): Retrieve a registration token for use with FCM.
-//             // ...
-//         } else {
-//             console.log('Unable to get permission to notify.');
-//         }
-//     });
-// }
-
+export const testNotification = () => {
+    if (confirm("Send Test?"))
+        fetch('/notify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/html',
+                'Accept': 'application/json'
+            },
+            body: 'This is a Test Notification'
+        }).then(res => {
+            console.log('Sent test notification', res);
+        }).catch(console.error);
+}
 
 
 const AUTH = getAuth();

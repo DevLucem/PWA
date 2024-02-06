@@ -45,3 +45,12 @@ self.addEventListener("fetch", fetchEvent => {
             })
         )
 })
+
+
+self.addEventListener('push', notificationEvent => {
+    const data = notificationEvent.data.json()
+    notificationEvent.waitUntil(self.registration.showNotification(data.notification.title, {
+        body: data.body,
+        icon: data.icon
+    }))
+});
