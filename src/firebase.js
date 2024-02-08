@@ -9,7 +9,7 @@ const app = initializeApp({ // Add your project config here
 const messaging = getMessaging(app);
 
 export const setupNotifications = registration => {
-    console.log("Service Worker Registered. Connecting Notifications...", vapidKey);
+    console.log("Service Worker Registered. Connecting Notifications...");
     getToken(messaging, {
         vapidKey: "BFyP8s6XOrMw_8B-sAf-98CVUq1mGVkyyRVOyphATjjCuC5_FEqMcg4nHW51Sg8z85kL-kNR9vJ5sTPFJYp3d7Q",
         serviceWorkerRegistration: registration
@@ -25,7 +25,6 @@ export const setupNotifications = registration => {
         }).then(res => {
             console.log('Sent token to server', res);
         }).catch(console.error);
-
     }).catch(console.error);   
 }
 
@@ -54,7 +53,6 @@ const AUTH = getAuth();
 export const listenUser = (callback) => onAuthStateChanged(AUTH, callback)
 export const signIn = () => {return signInWithPopup(AUTH, new GoogleAuthProvider())}
 export const logOut = () => {return signOut(AUTH)}
-
 
 
 const FIRESTORE = initializeFirestore(app, {localCache: persistentLocalCache()})
