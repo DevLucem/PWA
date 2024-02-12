@@ -3,8 +3,8 @@ import {getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOu
 import {initializeFirestore, persistentLocalCache, onSnapshot, collection} from 'firebase/firestore'
 import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
-const app = initializeApp({ // Add your project config here
-});
+import firebaseConfig from "./firebaseConfig.json";
+const app = initializeApp(firebaseConfig);
 
 const messaging = getMessaging(app);
 

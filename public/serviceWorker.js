@@ -48,9 +48,30 @@ self.addEventListener("fetch", fetchEvent => {
 
 
 self.addEventListener('push', notificationEvent => {
-    const data = notificationEvent.data.json()
-    notificationEvent.waitUntil(self.registration.showNotification(data.notification.title, {
-        body: data.body,
-        icon: data.icon
+    const payload = notificationEvent.data.json();
+    console.log("Received", payload)
+    notificationEvent.waitUntil(self.registration.showNotification(payload.notification.title, {
+        body: payload.body,
+        icon: "/favicon.ico",
+        badge: "/favicon.ico",
+        data: {...payload.data},
+        actions: [
+            {
+                action: 'open',
+                title: 'Check it out!'
+            },
+            {
+                action: 'close',
+                title: 'I already know'
+            }
+        ],
     }))
 });
+
+self.addEventListener('notificationclick',  event => {
+    let notification = event.notification
+    let action = event.action
+
+    if (action === 'close') notification.close()
+    else self.clients.openWindow(notification.data.url).finally(() => notification.close())
+})

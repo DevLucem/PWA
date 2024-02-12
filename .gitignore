@@ -28,3 +28,5 @@ src/KEYS.js
 *.sw?
 .firebase
 .firebaserc
+
+src/firebaseConfig.json

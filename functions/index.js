@@ -26,7 +26,16 @@ exports.notify = onRequest((request, response) => {
             title: "Test Notification",
             body: request.body.text
         },
-        topic: "all"
+        data: {
+            url: "https://pwa-progressive.web.app/notifications?tag=test-notification",
+            tag: "test-notification"
+        },
+        topic: "all",
+        webpush: {
+            fcm_options: {
+                link: "https://pwa-progressive.web.app/notifications",
+            }
+        }
     }).then(result => {
         console.log("Sent notification:", result);
         response.sendStatus(200)
