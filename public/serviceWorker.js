@@ -46,12 +46,11 @@ self.addEventListener("fetch", fetchEvent => {
         )
 })
 
-
 self.addEventListener('push', notificationEvent => {
     const payload = notificationEvent.data.json();
     console.log("Received", payload)
     notificationEvent.waitUntil(self.registration.showNotification(payload.notification.title, {
-        body: payload.body,
+        body: payload.notification.body,
         icon: "/favicon.ico",
         badge: "/favicon.ico",
         data: {...payload.data},

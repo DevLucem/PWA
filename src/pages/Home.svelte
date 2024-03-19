@@ -15,7 +15,7 @@
 
     <div class="grid grid-cols-4 justify-around">
         {#each [['https://svelte.dev/', '/svelte.png'], ['https://vitejs.dev/', 'https://vitejs.dev/logo.svg'], ['https://tailwindcss.com/', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Tailwind_CSS_Logo.svg/1024px-Tailwind_CSS_Logo.svg.png'], ['https://firebase.google.com/docs/hosting', 'https://www.gameartguppy.com/wp-content/uploads/2019/04/mascot_firebase-logo.png']] as icon}
-            <a href={icon[0]} class="duration-500 m-1 hover:scale-105 hover:shadow-xl border border-.5 border-fade p-2 rounded">
+            <a href={icon[0]} class="duration-500 m-1 hover:scale-105 hover:shadow-xl border border-.5 border-fade p-2 rounded flex items-center">
                 <img alt="Built With" src={icon[1]} class="w-full">
             </a>
         {/each}
