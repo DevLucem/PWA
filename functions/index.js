@@ -8,39 +8,42 @@ const {getMessaging} = require("firebase-admin/messaging");
 const app = initializeApp(); // for production
 const messaging = getMessaging(app);
 
-exports.subscribe = onRequest((request, response) => {
-    logger.info("New Subscription!", request.body, {structuredData: true});
-    messaging.subscribeToTopic(request.body.token, request.body.topic).then(result => {
-        console.log("Subscribed to topic:", result, request.body.topic);
-        response.sendStatus(200)
-    }).catch(error => {
-        logger.error("Error subscribing to topic:", error, {structuredData: true});
-        response.status(500).send("Error subscribing to topic");
-    })
-});
+exports.notify = onRequest(async (request, response) => {
+    // Ensure the request is a POST
+    if (request.method !== "POST") {
+        logger.error("Invalid request method", { method: request.method });
+        return response.status(405).send("Method Not Allowed");
+    }
 
-exports.notify = onRequest((request, response) => {
-    logger.info("Test Notification", {structuredData: true});
-    messaging.send({
-        notification: {
-            title: "Test Notification",
-            body: request.body.text
-        },
-        data: {
-            url: "https://pwa-progressive.web.app/notifications?tag=test-notification",
-            tag: "test-notification"
-        },
-        topic: "all",
-        webpush: {
-            fcm_options: {
-                link: "https://pwa-progressive.web.app/notifications",
-            }
+    // Validate request body
+    const { title, body, token } = request.body;
+    if (!title || !body || !token) {
+        logger.error("Missing required fields", { body: request.body });
+        return response.status(400).send("Missing title, body, or token");
+    }
+
+    try {
+        logger.info("Test Notification", { structuredData: true });
+        logger.info("Request Body:", { title, body, token }, { structuredData: true });
+
+        const message = {
+            notification: {
+                title,
+                body,
+            },
+            token,
+        };
+
+        const res = await messaging.send(message);
+        logger.info("Successfully sent message:", res, { structuredData: true });
+        return response.sendStatus(200);
+    } catch (error) {
+        logger.error("Error sending message:", error, { structuredData: true });
+        // Provide more specific error messages if possible
+        if (error.code === "messaging/invalid-registration-token" || 
+            error.code === "messaging/registration-token-not-registered") {
+            return response.status(400).send("Invalid or unregistered token");
         }
-    }).then(result => {
-        console.log("Sent notification:", result);
-        response.sendStatus(200)
-    }).catch(error => {
-        logger.error("Error sending notification:", error, {structuredData: true});
-        response.status(500).send("Error sending notification");
-    });
+        return response.status(500).send("Error sending message");
+    }
 });

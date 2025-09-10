@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #db4938;
+  --color-secondary: #3e47ff;
+  --color-accent: #747bff;
+  --color-fade: #fee2e2;
+  --color-background: #f9fafb;
+  --color-text: #1f2937;
+  --color-text-secondary: #4b5563;
+  --color-border: #e5e7eb;
+  --color-card: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-background: #1f2937;
+    --color-text: #f9fafb;
+    --color-text-secondary: #9ca3af;
+    --color-border: #374151;
+    --color-primary: #f87171;
+    --color-secondary: #60a5fa;
+    --color-accent: #a5b4fc;
+    --color-fade: #4b5563;
+    --color-card: #374151;
+  }
+}
+
+a, p span {
+  @apply text-primary hover:text-secondary transition-colors duration-200;
+}
+
+h1 {
+  @apply text-2xl font-bold text-text;
+}
+
+h2 {
+  @apply text-xl font-semibold text-text;
+}
+
+h3 {
+  @apply text-lg font-medium text-text;
+}
+
+svg {
+  @apply text-accent h-8 w-8 hover:text-text hover:cursor-pointer;
+}
+
+button {
+  @apply px-4 py-2 rounded-full flex items-center mx-auto;
+}
+
+input, textarea {
+  @apply flex-1 border-2 border-secondary rounded-3xl px-4 bg-card;
+}
+
+.row {
+  @apply flex flex-row;
+}
+
+.col {
+  @apply flex flex-col;
+}
+
+.center {
+  @apply justify-center items-center text-center;
+}
+
+.card {
+  @apply bg-card shadow-md rounded-lg p-6 border border-border;
+}
+
+.img {
+  @apply rounded-lg m-4 hover:scale-105 transition-transform duration-200 max-w-32;
+}
+
+.profile {
+  @apply max-h-24 max-w-24 rounded-full border-2 border-border;
+}

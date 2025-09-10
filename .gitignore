@@ -1,6 +1,6 @@
 # Build system cache and logs
 logs
-docs
+build
 dist
 *.log
 npm-debug.log*
@@ -9,12 +9,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+
 # Runtime data
 node_modules
 dist-ssr
 *.local
 src/KEYS.js
-
 
 
 # Editor directories and files

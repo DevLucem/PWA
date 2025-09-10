@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "pwa-progressive",
-    "public": "docs",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
