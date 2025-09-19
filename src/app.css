@@ -47,8 +47,9 @@ svg {
 }
 
 button {
-  @apply px-4 py-2 rounded-full flex items-center mx-auto;
+  @apply px-4 py-2 rounded-full flex items-center mx-auto bg-fade border border-primary;;
 }
+
 
 input, textarea {
   @apply flex-1 border-2 border-secondary rounded-3xl px-4 bg-card;

@@ -1,7 +1,11 @@
 <script>
     import AuthButton from '../components/AuthButton.svelte';
     let user;
+
+    let install, installButton;
 </script>
+
+<svelte:window on:beforeinstallprompt={e => {install=e; installButton.removeAttribute("hidden")}} on:appinstalled={() => installButton.setAttribute("hidden", "")} />
 
 <div class="card center space-y-8 max-w-[500px]">
     <h2>Progressive Web App</h2>
@@ -21,6 +25,9 @@
         <strong> <a href="https://tailwindcss.com/" target="_blank">Tailwind!</a> </strong> Speedy UI builder.
         And <strong> <a href="https://firebase.google.com/docs/hosting">Firebase!</a> </strong> your no backend no hassle baby partner.
     </p>
-    <AuthButton bind:user />
+    <div class="row">
+        <AuthButton bind:user />
+        <button bind:this={installButton} on:click={() => install.prompt()} hidden>Install</button>
+    </div>
 </div>
 

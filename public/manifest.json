@@ -1,5 +1,6 @@
 {
   "name": "Progressive Web App",
+  "description": "A simple PWA template ready to build apps",
   "short_name": "PWA",
   "start_url": "index.html",
   "display": "standalone",

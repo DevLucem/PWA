@@ -41,4 +41,6 @@
   <p>
     Try our app to experience how PWAs can transform your web projects into powerful, user-friendly applications!
   </p>
+
+  <a href="https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps" target="_blank">Checkout Mozilla.org for more</a>
 </div>
